@@ -18,8 +18,8 @@ module.exports = function( grunt ) {
 		// Coffee to JS compilation
 		min: {
 			default: {
-				src: ['src/js/index.js'],
-				dest: 'app/js/index.js'
+				src: ['src/js/stocal.js'],
+				dest: 'app/js/stocal.js'
 			}
 		},
 		coffee : {
@@ -34,14 +34,20 @@ module.exports = function( grunt ) {
 				src: [
 					,'src/js/header.txt'
 					,'src/js/calendar_settings.js'
-					//,'src/js/calendar.js'
+					,'src/js/calendar_utils.js'
+					,'src/js/event_data.js'
+					,'src/js/event_type.js'
+					,'src/js/holiday.js'
+					,'src/js/week.js'
+					,'src/js/month.js'
+					,'src/js/calendar.js'
 					,'src/js/footer.txt'
 				],
-				dest: 'src/js/index.js'
+				dest: 'app/js/stocal.js'
 			},
 			prod : {
 				src: '<config:concat.default.src>',
-				dest: 'app/js/index.js'
+				dest: 'src/js/stocal.js'
 			}
 		},
 
@@ -222,6 +228,10 @@ module.exports = function( grunt ) {
 			hogan : {
 				message : grunt.template.today() + " : hogan compiled",
 				title : "hogan ＼(^o^)／"
+			},
+			production : {
+				message : grunt.template.today() + " : production build compiled",
+				title : "production ＼(^o^)／"
 			}
 		}
 	});
@@ -235,9 +245,9 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks('grunt-coffee');
 
 	grunt.registerTask('production', 'compile coffee and compass to productioin', function(){
-		grunt.task.run( "hogan" );
-		grunt.task.run( "concat coffee concat:prod min" );
-		grunt.task.run( "compass:prod" );
+		//grunt.task.run( "hogan" );
+		grunt.task.run( "coffee concat:prod min" );
+		//grunt.task.run( "compass:prod" );
 		grunt.task.run( "notifyGrowl:production" );
 	});
 

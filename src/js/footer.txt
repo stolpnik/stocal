@@ -1,1 +1,1 @@
-})(jQuery);
+}).apply( this, jQuery );
