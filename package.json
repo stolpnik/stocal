@@ -1,11 +1,11 @@
 {
-    "name": "calendar",
+    "name": "stocal",
     "version": "0.1.0",
-    "private": true,
+    "private": false,
     "scripts": {
         "start": ""
     }
-    ,"title" : "calendar"
+    ,"title" : "stocal"
     ,"author" : {
         "name" : ""
     }
