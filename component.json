@@ -1,7 +1,7 @@
 {
 	"name": "stocal",
 	"version": "0.1.0",
-	"main": ["./stocal.js"],
+	"main": ["./package/stocal.js"],
 	"dependencies": {
 		"jquery" : "1.7.2"
 	}
