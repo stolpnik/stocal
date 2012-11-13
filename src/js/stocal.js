@@ -1042,4 +1042,4 @@ if (typeof module !== "undefined" && module !== null ? module.exports : void 0) 
   this.stocal.Calendar = Calendar;
 }
 
-}).apply( this, jQuery );
+}).call( this, jQuery );

@@ -1,1 +1,1 @@
-}).apply( this, jQuery );
+}).call( this, jQuery );
