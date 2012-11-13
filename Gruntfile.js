@@ -248,6 +248,7 @@ module.exports = function( grunt ) {
 		//grunt.task.run( "hogan" );
 		grunt.task.run( "coffee concat:prod min" );
 		//grunt.task.run( "compass:prod" );
+		grunt.file.copy( "app/js/stocal.js", "package/stocal.js" );
 		grunt.task.run( "notifyGrowl:production" );
 	});
 
