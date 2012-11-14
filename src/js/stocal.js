@@ -881,7 +881,7 @@ $ = $ || require("jquery");
 Month = (function() {
 
   function Month(date, options) {
-    var calArray, d, dateMax, day, dayCount, events, firstDay, isLeapYear, month, start, week, weekCount, weeks, year, _i, _j, _len, _len1, _ref4;
+    var calArray, d, dateMax, dates, day, dayCount, endDate, events, firstDay, isLeapYear, month, start, startDate, week, weekCount, weeks, year, _i, _j, _len, _len1, _ref4, _ref5;
     if (date == null) {
       date = null;
     }
@@ -913,12 +913,18 @@ Month = (function() {
       }
       weeks.push(week);
     }
+    startDate = new Date(year, month - 1, 1);
+    endDate = new Date(year, month - 1, dateMax);
     calArray = [];
+    dates = [];
     for (_i = 0, _len = weeks.length; _i < _len; _i++) {
       week = weeks[_i];
       _ref4 = week.calendar;
       for (_j = 0, _len1 = _ref4.length; _j < _len1; _j++) {
         day = _ref4[_j];
+        if ((startDate <= (_ref5 = day.date) && _ref5 <= endDate)) {
+          dates.push(day);
+        }
         calArray.push(day);
       }
     }
@@ -931,6 +937,7 @@ Month = (function() {
     this.weeks = weeks;
     this.calendar = calArray;
     this.options = options;
+    this.dates = dates;
     if (options != null ? options.events : void 0) {
       this.initEvents(options.events);
     }

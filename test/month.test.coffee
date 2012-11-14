@@ -3,7 +3,6 @@ expect            = chai.expect
 chai.should()
 
 Month = require "../src/coffee/month"
-EventData = require "../src/coffee/event_data"
 settings = require "../src/coffee/calendar_settings"
 month = null
 date = new Date( 2012, 10, 20 )
@@ -29,9 +28,18 @@ describe "Monthについて", ->
 			month.should.have.property("weeks").with.length(5)
 		it "calendarの長さは35", ->
 			month.should.have.property("calendar").with.length(month.weeks.length * 7)
+		it "datesの長さは30", ->
+			month.should.have.property("dates").length(30)
 		it "optionsはoptions", ->
 			month.should.have.property("options").with.equal(options)
 	describe "2012/2", ->
+		settings.graphTypes =[
+			name : "test"
+			title : "てすと"
+			no : 1
+		]
+		EventData = require "../src/coffee/event_data"
+
 		before ->
 			date = new Date(2012, 1)
 			options =
@@ -68,11 +76,6 @@ describe "Monthについて", ->
 						start     : new Date(2012, 0, 10)
 						end       : new Date(2012, 0, 28)
 					)]
-			settings.graphTypes =[
-				name : "test"
-				title : "てすと"
-				no : 1
-			]
 			month = new Month( date, options )
 		it "dateはDateオブジェクト", ->
 			month.should.have.property("date").with.equal( date ).with.be.a("date")
@@ -84,12 +87,14 @@ describe "Monthについて", ->
 			month.should.have.property("isLeapYear").with.be.true
 		it "firstDayは4", ->
 			month.should.have.property("firstDay").with.equal( 3 )
-		it "dateMaxは30", ->
+		it "dateMaxは29", ->
 			month.should.have.property("dateMax").with.equal( 29 )
 		it "weeksの長さは5", ->
 			month.should.have.property("weeks").with.length(5)
 		it "calendarの長さは35", ->
 			month.should.have.property("calendar").with.length(month.weeks.length * 7)
+		it "datesの長さは29", ->
+			month.should.have.property("dates").length(29)
 		it "optionsはoptions", ->
 			month.should.have.property("options").with.equal(options)
 		describe "events", ->

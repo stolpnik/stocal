@@ -40,9 +40,15 @@ class Month
 				dayCount = week.endDate.getDate() + 1
 			weeks.push week
 
+		startDate = new Date( year, month - 1, 1 )
+		endDate = new Date( year, month - 1, dateMax )
+
 		calArray = []
+		dates = []
 		for week in weeks
 			for day in week.calendar
+				if startDate <= day.date <= endDate
+					dates.push day
 				calArray.push day
 
 		this.date = d
@@ -54,6 +60,7 @@ class Month
 		this.weeks = weeks
 		this.calendar = calArray
 		this.options = options
+		this.dates = dates
 
 		if options?.events
 			this.initEvents options.events
